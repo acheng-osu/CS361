@@ -23,7 +23,7 @@ while True:
         img_service_file = open('image-service.txt', 'r', encoding="utf-8")
         img_path = img_service_file.read()
         img_service_file.close()
-        print(img_path)
+        print("\n" + img_path + "\n")
     elif user_choice == "2":
         print("Thank you. Goodbye.")
         break

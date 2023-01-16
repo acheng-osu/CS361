@@ -1,6 +1,6 @@
 import time
 import random
-
+import os
 
 while True:
     time.sleep(1)
@@ -12,8 +12,9 @@ while True:
         time.sleep(3)
         prng_service_file.close()
         prng_service_file = open('prng-service.txt', 'w', encoding="utf-8")
+        num_imgs = len(os.listdir(path="imgs"))
         time.sleep(3)
-        prng_service_file.write(str(random.randint(0, 10^6)))
+        prng_service_file.write(str(random.randint(0, num_imgs - 1)))
         prng_service_file.close()
             
 

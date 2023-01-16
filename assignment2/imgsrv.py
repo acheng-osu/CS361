@@ -15,7 +15,7 @@ while True:
         img_service_file = open('image-service.txt', 'w', encoding="utf-8")
 
         list_imgs = os.listdir(path="imgs")
-        img_index = int(data) % len(list_imgs)
+        img_index = int(data)
 
         str_path = str(Path.cwd()) + "/imgs/" + list_imgs[img_index]
 
