@@ -1,6 +1,5 @@
 import time
 import random
-import os
 
 
 while True:
@@ -10,9 +9,11 @@ while True:
     data = prng_service_file.read()
 
     if data == "run":
+        time.sleep(3)
         prng_service_file.close()
         prng_service_file = open('prng-service.txt', 'w', encoding="utf-8")
-        prng_service_file.write(random.randint(0, 10^6))
+        time.sleep(3)
+        prng_service_file.write(str(random.randint(0, 10^6)))
         prng_service_file.close()
             
 

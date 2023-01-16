@@ -1,27 +1,29 @@
 import time
 
 while True:
-    user_choice = input("Welcome to Albert's Assignment 2.\nPlease enter 1 to generate a new image or 2 to exit the program: ")
+    user_choice = input("Please enter 1 to generate a new image or 2 to exit the program: ")
 
     if user_choice == "1":
-        with open('prng-service.txt', 'r+', encoding="utf-8") as prng_service_file:
-            prng_service_file.seek(0)
-            prng_service_file.truncate()
+        prng_service_file = open('prng-service.txt', 'w', encoding="utf-8")
+        prng_service_file.write("run")
+        prng_service_file.close()
 
-            prng_service_file.write("run")
-            time.sleep(5)
-            prng_service_file.seek(0)
+        time.sleep(10)
 
-            str_rand = int(prng_service_file.readline())
-            with open('image-service.txt', 'r+', encoding="utf-8") as img_service_file:
-                img_service_file.seek(0)
-                img_service_file.truncate()
+        prng_service_file = open('prng-service.txt', 'r', encoding="utf-8")
+        str_rand = prng_service_file.read()
+        prng_service_file.close()
 
-                img_service_file.write(str_rand)
-                time.sleep(5)
+        img_service_file = open('image-service.txt', 'w', encoding="utf-8")
+        img_service_file.write(str_rand)
+        img_service_file.close()
 
-                img_service_file.seek(0)
-                print(img_service_file.read())
+        time.sleep(10)
+
+        img_service_file = open('image-service.txt', 'r', encoding="utf-8")
+        img_path = img_service_file.read()
+        img_service_file.close()
+        print(img_path)
     elif user_choice == "2":
         print("Thank you. Goodbye.")
         break
