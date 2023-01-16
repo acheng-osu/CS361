@@ -11,10 +11,9 @@ while True:
         
         if data == "run":
             list_imgs = os.listdir(path="imgs")
-            num_rand = random.randint(0, len(list_imgs) - 1)
             prng_service_file.seek(0)
             prng_service_file.truncate()
-            prng_service_file.write(str(num_rand))
+            prng_service_file.write(str(random.randint(0, 10^6)))
             
 
 
