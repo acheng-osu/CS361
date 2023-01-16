@@ -6,14 +6,14 @@ import os
 while True:
     time.sleep(1)
     
-    with open('prng-service.txt', 'r+', encoding="utf-8") as prng_service_file:
-        data = prng_service_file.read()
-        
-        if data == "run":
-            list_imgs = os.listdir(path="imgs")
-            prng_service_file.seek(0)
-            prng_service_file.truncate()
-            prng_service_file.write(str(random.randint(0, 10^6)))
+    prng_service_file = open('prng-service.txt', 'r', encoding="utf-8")
+    data = prng_service_file.read()
+
+    if data == "run":
+        prng_service_file.close()
+        prng_service_file = open('prng-service.txt', 'w', encoding="utf-8")
+        prng_service_file.write(random.randint(0, 10^6))
+        prng_service_file.close()
             
 
 

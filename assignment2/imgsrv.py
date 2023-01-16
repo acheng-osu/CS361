@@ -6,17 +6,19 @@ import os
 while True:
     time.sleep(1)
 
-    with open('image-service.txt', 'r+', encoding="utf-8") as img_service_file:
-        data = img_service_file.read()
+    img_service_file = open('image-service.txt', 'r+', encoding="utf-8")
+    data = img_service_file.read()
 
-        if data.isnumeric():
-            list_imgs = os.listdir(path="imgs")
-            img_index = int(data) % len(list_imgs)
+    if data.isnumeric():
+        img_service_file.close()
+        img_service_file = open('image-service.txt', 'w', encoding="utf-8")
 
-            str_path = str(Path.cwd()) + "/imgs/" + list_imgs[img_index]
-            
-            img_service_file.seek(0)
-            img_service_file.truncate()
-            img_service_file.write(str_path)
+        list_imgs = os.listdir(path="imgs")
+        img_index = int(data) % len(list_imgs)
+
+        str_path = str(Path.cwd()) + "/imgs/" + list_imgs[img_index]
+        img_service_file.write(str_path)
+
+        img_service_file.close()
 
 
